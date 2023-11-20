@@ -17,7 +17,8 @@
  * under the License.
  */
 const jwt = require('jsonwebtoken');
-const config = require('../config.test.json');
+import { buildConfig } from '../src/config';
+let config = buildConfig();
 
 import { describe, expect, test, beforeEach, afterEach } from '@jest/globals';
 import * as http from 'http';
@@ -27,6 +28,7 @@ import { WebSocket } from 'ws';
 // NOTE: these mock variables needs to start with "mock" due to
 // calls to `jest.mock` being hoisted to the top of the file.
 // https://jestjs.io/docs/es6-class-mocks#calling-jestmock-with-the-module-factory-parameter
+
 const mockRedisXrange = jest.fn();
 
 jest.mock('ws');
